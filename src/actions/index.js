@@ -1,5 +1,5 @@
 import stream from "../apis/stream";
-import { SIGN_IN, SIGN_OUT } from "./types";
+import { CREATE_STREAM, SIGN_IN, SIGN_OUT } from "./types";
 
 export const signIn = userId => {
   return {
@@ -15,5 +15,10 @@ export const signOut = () => {
 };
 
 export const createStream = formValues => async dispatch => {
-  stream.post("/streams", formValues);
+  const response = await stream.post("/streams", formValues);
+
+  dispatch({
+    type: CREATE_STREAM,
+    payload: response.data
+  });
 };
