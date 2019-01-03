@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 //libraries for routing.
-import { BrowserRouter, Route } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
+import history from '../history';
 
 //Home made components.
 import StreamCreate from "./streams/StreamCreate";
@@ -13,18 +14,18 @@ import Header from "./Header";
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <div>
           <Header />
           <div className="ui container">
             <Route path="/" exact component={StreamList} />
             <Route path="/streams/new" exact component={StreamCreate} />
             <Route path="/streams/remove" exact component={StreamDelete} />
-            <Route path="/streams/edit" exact component={StreamEdit} />
+            <Route path="/streams/edit/:id" exact component={StreamEdit} />
             <Route path="/streams/show" exact component={StreamShow} />
           </div>
         </div>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
