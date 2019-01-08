@@ -13,7 +13,7 @@ class StreamDelete extends Component {
 
   onClickDelete = () => {
     this.props.deleteStream(this.props.match.params.id);
-  }
+  };
 
   renderActions() {
     return (
